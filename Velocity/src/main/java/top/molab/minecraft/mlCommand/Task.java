@@ -27,18 +27,24 @@ public class Task {
         this.serviceData = serviceData;
     }
 
+    // 用echo检查是不是同一个任务的响应
     public boolean isReplyMatch(String echo){
         return this.echo.equals(echo);
     }
 
+    // 加入回复
     public void addReply(PlayerLoginData data) {
         reply.add(data);
     }
 
+    // 如果回复数量=服务器数量那就是全部回复完了
+    // 可以调用sendReply去结束回调地狱了
     public boolean isFinished() {
         return reply.size() == this.serverCount;
     }
 
+
+    // 上帝啊，你终于指引我离开回调地狱了
     public void sendReply(){
         PlayerLoginData loginData = this.getResult();
 
@@ -49,6 +55,8 @@ public class Task {
         message.setMessageType(MessageTypes.REPLY_PLAYER_DATA);
         message.setData(data);
         message.setEcho(StringUtils.getRandomEchoString());
+
+        // 发出去，再也不管了
         this.channel.sendPluginMessage(PluginMessageListener.getInstance().IDENTIFIER, message.toBytes());
     }
 

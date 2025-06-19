@@ -25,6 +25,7 @@ public class PluginMessageListener {
     tasks.add(task);
   }
 
+  // 把玩家登录状态的数据装回到Tasks里面
   public void addPlayerLoginDataReply(PluginMessage message){
     for (Task task: tasks){
       if (task.isReplyMatch(message.getEcho())){
@@ -57,6 +58,9 @@ public class PluginMessageListener {
         .info("Registered handler: {}", handler.getClass().getName());
   }
 
+  // 检查哪些任务完成了
+  // 完成了就发掉消息结束回调地狱
+  // 这特么一大坨屎终于结束了
   public void checkTasks(){
     for (Task task: tasks){
       if (task.isFinished()){

@@ -12,6 +12,7 @@ public class GetLoginDataReplyHandler implements MessageHandler{
         return type.equals(MessageTypes.REPLY_PLAYER_LOGIN_INFO);
     }
 
+    // 接收所有的登录状态回复
     @Override
     public void handle(ChannelMessageSink server, PluginMessage message) {
         PluginMessageListener.getInstance().addPlayerLoginDataReply(message);

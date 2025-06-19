@@ -10,6 +10,9 @@ import top.molab.minecraft.MLCommand.Core.utils.FindGroupUtils;
 import top.molab.minecraft.mLCommand.bukkit.ConfigManager;
 import top.molab.minecraft.mLCommand.bukkit.utils.CommandExecuteUtil;
 
+/**
+ *在Velocity完成收集完全部内容后，会发送MessageTypes.REPLY_PLAYER_DATA，这时候可以处理登陆命令了
+ */
 public class GetReplyHandler implements IHandler {
 
   @Override
