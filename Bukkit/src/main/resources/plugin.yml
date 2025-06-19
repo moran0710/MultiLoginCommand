@@ -1,0 +1,9 @@
+main: top.molab.minecraft.mLCommand.bukkit.MLCommandBukkit
+name: MultiLoginCommand
+version: 0.0.1
+description: Execute command when Player Login With MultiLogin
+load: POSTWORLD
+author: Moran0710
+website: openmo.molab.top
+prefix: MLCommand
+

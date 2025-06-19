@@ -1,0 +1,116 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HttpUrlsUsage" enabled="false" level="WEAK WARNING" enabled_by_default="false">
+      <option name="ignoredUrls">
+        <list>
+          <option value="http://0.0.0.0" />
+          <option value="http://127.0.0.1" />
+          <option value="http://activemq.apache.org/schema/" />
+          <option value="http://cxf.apache.org/schemas/" />
+          <option value="http://dev.qydailiip.com" />
+          <option value="http://java.sun.com/" />
+          <option value="http://javafx.com/fxml" />
+          <option value="http://javafx.com/javafx/" />
+          <option value="http://json-schema.org/draft" />
+          <option value="http://localhost" />
+          <option value="http://maven.apache.org/POM/" />
+          <option value="http://maven.apache.org/xsd/" />
+          <option value="http://primefaces.org/ui" />
+          <option value="http://schema.cloudfoundry.org/spring/" />
+          <option value="http://schemas.xmlsoap.org/" />
+          <option value="http://tiles.apache.org/" />
+          <option value="http://www.ibm.com/webservices/xsd" />
+          <option value="http://www.jboss.com/xml/ns/" />
+          <option value="http://www.jboss.org/j2ee/schema/" />
+          <option value="http://www.springframework.org/schema/" />
+          <option value="http://www.springframework.org/security/tags" />
+          <option value="http://www.springframework.org/tags" />
+          <option value="http://www.thymeleaf.org" />
+          <option value="http://www.w3.org/" />
+          <option value="http://xmlns.jcp.org/" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="MarkdownIncorrectlyNumberedListItem" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyBroadExceptionInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyNoneFunctionAssignmentInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="60">
+            <item index="0" class="java.lang.String" itemvalue="nonebot" />
+            <item index="1" class="java.lang.String" itemvalue="httpx" />
+            <item index="2" class="java.lang.String" itemvalue="bs4" />
+            <item index="3" class="java.lang.String" itemvalue="tzlocal" />
+            <item index="4" class="java.lang.String" itemvalue="win32_setctime" />
+            <item index="5" class="java.lang.String" itemvalue="greenlet" />
+            <item index="6" class="java.lang.String" itemvalue="html5lib" />
+            <item index="7" class="java.lang.String" itemvalue="PyYAML" />
+            <item index="8" class="java.lang.String" itemvalue="python-dotenv" />
+            <item index="9" class="java.lang.String" itemvalue="h11" />
+            <item index="10" class="java.lang.String" itemvalue="setuptools" />
+            <item index="11" class="java.lang.String" itemvalue="MarkupSafe" />
+            <item index="12" class="java.lang.String" itemvalue="httptools" />
+            <item index="13" class="java.lang.String" itemvalue="fake-headers" />
+            <item index="14" class="java.lang.String" itemvalue="pathlib" />
+            <item index="15" class="java.lang.String" itemvalue="starlette" />
+            <item index="16" class="java.lang.String" itemvalue="certifi" />
+            <item index="17" class="java.lang.String" itemvalue="anyio" />
+            <item index="18" class="java.lang.String" itemvalue="soupsieve" />
+            <item index="19" class="java.lang.String" itemvalue="uvicorn" />
+            <item index="20" class="java.lang.String" itemvalue="beautifulsoup4" />
+            <item index="21" class="java.lang.String" itemvalue="pydantic" />
+            <item index="22" class="java.lang.String" itemvalue="pytest-ordering" />
+            <item index="23" class="java.lang.String" itemvalue="iniconfig" />
+            <item index="24" class="java.lang.String" itemvalue="loguru" />
+            <item index="25" class="java.lang.String" itemvalue="click" />
+            <item index="26" class="java.lang.String" itemvalue="APScheduler" />
+            <item index="27" class="java.lang.String" itemvalue="loguru-logging-intercept" />
+            <item index="28" class="java.lang.String" itemvalue="pydantic_core" />
+            <item index="29" class="java.lang.String" itemvalue="platformdirs" />
+            <item index="30" class="java.lang.String" itemvalue="PyMySQL" />
+            <item index="31" class="java.lang.String" itemvalue="Mako" />
+            <item index="32" class="java.lang.String" itemvalue="httpcore" />
+            <item index="33" class="java.lang.String" itemvalue="idna" />
+            <item index="34" class="java.lang.String" itemvalue="pathspec" />
+            <item index="35" class="java.lang.String" itemvalue="alembic" />
+            <item index="36" class="java.lang.String" itemvalue="pluggy" />
+            <item index="37" class="java.lang.String" itemvalue="SQLAlchemy" />
+            <item index="38" class="java.lang.String" itemvalue="mypy-extensions" />
+            <item index="39" class="java.lang.String" itemvalue="sniffio" />
+            <item index="40" class="java.lang.String" itemvalue="aiosqlite" />
+            <item index="41" class="java.lang.String" itemvalue="aiomysql" />
+            <item index="42" class="java.lang.String" itemvalue="fastapi-cdn-host" />
+            <item index="43" class="java.lang.String" itemvalue="websockets" />
+            <item index="44" class="java.lang.String" itemvalue="annotated-types" />
+            <item index="45" class="java.lang.String" itemvalue="watchfiles" />
+            <item index="46" class="java.lang.String" itemvalue="six" />
+            <item index="47" class="java.lang.String" itemvalue="pytest" />
+            <item index="48" class="java.lang.String" itemvalue="black" />
+            <item index="49" class="java.lang.String" itemvalue="tzdata" />
+            <item index="50" class="java.lang.String" itemvalue="packaging" />
+            <item index="51" class="java.lang.String" itemvalue="pytest-asyncio" />
+            <item index="52" class="java.lang.String" itemvalue="python-multipart" />
+            <item index="53" class="java.lang.String" itemvalue="uvicorn-loguru-integration" />
+            <item index="54" class="java.lang.String" itemvalue="schedule" />
+            <item index="55" class="java.lang.String" itemvalue="fastapi" />
+            <item index="56" class="java.lang.String" itemvalue="colorama" />
+            <item index="57" class="java.lang.String" itemvalue="typing_extensions" />
+            <item index="58" class="java.lang.String" itemvalue="webencodings" />
+            <item index="59" class="java.lang.String" itemvalue="asyncer" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PySimplifyBooleanCheckInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyTypeCheckerInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="int.value" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
