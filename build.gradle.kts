@@ -12,8 +12,8 @@ repositories {
     mavenCentral()
     google()
     maven {
-        name="sonatype"
-        url=uri("https://oss.sonatype.org/content/repositories/snapshots/")
+        name = "sonatype"
+        url = uri("https://oss.sonatype.org/content/repositories/snapshots/")
     }
 }
 

@@ -6,4 +6,6 @@ load: POSTWORLD
 author: Moran0710
 website: openmo.molab.top
 prefix: MLCommand
+softDepend:
+  - PlaceholderAPI
 
