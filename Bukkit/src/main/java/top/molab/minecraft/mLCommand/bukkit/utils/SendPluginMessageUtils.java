@@ -8,8 +8,10 @@ import top.molab.minecraft.mLCommand.bukkit.MLCommandBukkit;
 public class SendPluginMessageUtils {
 
   public static void sendPluginMessage(byte[] message) {
-    ((Player[]) Bukkit.getOnlinePlayers().toArray())
-        [0].sendPluginMessage(
-            MLCommandBukkit.getInstance(), Constants.PLUGIN_MESSAGE_CHANNEL, message);
+    Bukkit.getOnlinePlayers().stream().toList().get(0).sendPluginMessage(
+            MLCommandBukkit.getInstance(),
+            Constants.PLUGIN_MESSAGE_CHANNEL,
+            message
+    );
   }
 }

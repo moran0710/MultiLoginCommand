@@ -1,9 +1,13 @@
 package top.molab.minecraft.MLCommand.Core.config;
 
 import java.io.*;
+
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;
 import org.yaml.snakeyaml.constructor.Constructor;
+import org.yaml.snakeyaml.nodes.Tag;
+import org.yaml.snakeyaml.representer.Representer;
 
 public class Config {
   private Group[] groups;
@@ -22,8 +26,16 @@ public class Config {
     Config config = new Config(groups);
     file.getParentFile().mkdir();
     file.createNewFile();
+
     try (StringWriter writer = new StringWriter()) {
-      Yaml yaml = new Yaml();
+
+      DumperOptions options = new DumperOptions();
+      options.setDefaultFlowStyle(DumperOptions.FlowStyle.BLOCK);
+
+      Representer representer = new Representer(options);
+      representer.addClassTag(Config.class, Tag.MAP);  // 明确指定配置类标签
+
+      Yaml yaml = new Yaml(representer,options);
       yaml.represent(config);
       yaml.dump(config, writer);
       try (FileWriter fileWriter = new FileWriter(file)) {

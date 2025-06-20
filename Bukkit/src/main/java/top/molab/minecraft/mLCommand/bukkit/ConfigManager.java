@@ -41,7 +41,7 @@ public class ConfigManager {
   }
 
   public void init() {
-    if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+    if (! Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
       this.isPapiEnabled = false;
       MLCommandBukkit.getInstance()
           .getLogger()
@@ -53,7 +53,7 @@ public class ConfigManager {
     Path dataDictionary = MLCommandBukkit.getInstance().getDataFolder().toPath();
     File configFile = new File(dataDictionary.toFile(), "config.yml");
     try {
-      this.config = Config.saveDefaultConfig(configFile);
+      this.config = Config.getConfig(configFile);
     } catch (IOException e) {
       MLCommandBukkit.getInstance().getLogger().info("Config file Load Error");
       throw new RuntimeException(e);

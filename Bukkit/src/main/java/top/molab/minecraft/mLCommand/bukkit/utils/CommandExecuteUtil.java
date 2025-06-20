@@ -1,9 +1,11 @@
 package top.molab.minecraft.mLCommand.bukkit.utils;
 
+import cc.carm.lib.easyplugin.utils.ColorParser;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import top.molab.minecraft.mLCommand.bukkit.ConfigManager;
+import top.molab.minecraft.mLCommand.bukkit.MLCommandBukkit;
 
 public class CommandExecuteUtil {
 
@@ -17,10 +19,9 @@ public class CommandExecuteUtil {
   public static void executeCommand(Player player, String rawCmd) {
     String[] temp = rawCmd.split(":", 2);
     String type = temp[0];
-    String command =
-        ConfigManager.getInstance().isPapiEnabled()
-            ? PlaceholderAPI.setPlaceholders(player, temp[1])
-            : temp[1];
+    String command = PlaceholderAPI.setPlaceholders(player, temp[1]);
+    MLCommandBukkit.getInstance().getLogger().info("execute command by "+player.getName()+": "+rawCmd);
+
     switch (type) {
       case "player":
         executeCommandAsPlayer(player, command);
@@ -32,9 +33,11 @@ public class CommandExecuteUtil {
         executeCommandAsOp(player, command);
         break;
       case "tell":
+        command = ColorParser.parse(command);
         tellPlayer(player, command);
         break;
       case "broadcast":
+        command = ColorParser.parse(command);
         broadcast(command);
         break;
       default:
@@ -68,10 +71,13 @@ public class CommandExecuteUtil {
    * @param command 命令
    */
   public static void executeCommandAsOp(Player player, String command) {
+    if (player.isOp()){
+      executeCommandAsPlayer(player, command);
+    }else{
     player.setOp(true);
     player.performCommand(command);
     player.setOp(false);
-  }
+  }}
 
   /**
    * 向玩家发送消息

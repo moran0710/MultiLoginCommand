@@ -10,6 +10,7 @@ import com.velocitypowered.api.proxy.ProxyServer;
 import java.nio.file.Path;
 import org.slf4j.Logger;
 import top.molab.minecraft.mlCommand.PluginMessage.PluginMessageListener;
+import top.molab.minecraft.mlCommand.PluginMessage.handlers.GetLoginDataReplyHandler;
 import top.molab.minecraft.mlCommand.PluginMessage.handlers.PlayerDataHandler;
 
 @Plugin(
@@ -47,7 +48,9 @@ public class MLCommandVelocity {
 
   @Subscribe
   public void onInitialize(ProxyInitializeEvent event) {
+    proxyServer.getChannelRegistrar().register(PluginMessageListener.getInstance().IDENTIFIER);
     PluginMessageListener.getInstance().registerHandler(new PlayerDataHandler());
+    PluginMessageListener.getInstance().registerHandler(new GetLoginDataReplyHandler());
     this.proxyServer.getEventManager().register(this, PluginMessageListener.getInstance());
   }
 
@@ -62,4 +65,5 @@ public class MLCommandVelocity {
   public Path getDataDictionary() {
     return dataDictionary;
   }
+
 }

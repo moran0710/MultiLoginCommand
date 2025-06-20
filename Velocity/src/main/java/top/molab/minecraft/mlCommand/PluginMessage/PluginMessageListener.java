@@ -2,14 +2,19 @@ package top.molab.minecraft.mlCommand.PluginMessage;
 
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
+import com.google.gson.internal.LinkedTreeMap;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.PluginMessageEvent;
+import com.velocitypowered.api.event.player.PlayerChatEvent;
 import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.jetbrains.annotations.NotNull;
 import top.molab.minecraft.MLCommand.Core.Constants;
 import top.molab.minecraft.MLCommand.Core.DTO.PlayerLoginData;
 import top.molab.minecraft.MLCommand.Core.pluginMessage.PluginMessage;
+import top.molab.minecraft.MLCommand.Core.utils.ClassCastUtil;
 import top.molab.minecraft.mlCommand.MLCommandVelocity;
 import top.molab.minecraft.mlCommand.PluginMessage.handlers.MessageHandler;
 import top.molab.minecraft.mlCommand.Task;
@@ -29,7 +34,7 @@ public class PluginMessageListener {
   public void addPlayerLoginDataReply(PluginMessage message){
     for (Task task: tasks){
       if (task.isReplyMatch(message.getEcho())){
-        task.addReply((PlayerLoginData) message.getData());
+        task.addReply(ClassCastUtil.getPlayerLoginDataFromLinkedTreeMap((LinkedTreeMap)message.getData()));
       }
     }
   }
@@ -62,12 +67,19 @@ public class PluginMessageListener {
   // 完成了就发掉消息结束回调地狱
   // 这特么一大坨屎终于结束了
   public void checkTasks(){
+    List<Task> removed = new ArrayList<>();
     for (Task task: tasks){
       if (task.isFinished()){
         task.sendReply();
-        removeTask(task);
+        removed.add(task);
       }
     }
+    synchronized (tasks){
+      for (Task task: removed){
+        tasks.remove(task);
+      }
+    }
+    // MLCommandVelocity.getInstance().getLogger().info("");
   }
 
   @Subscribe
@@ -76,8 +88,10 @@ public class PluginMessageListener {
       return;
     }
     event.setResult(PluginMessageEvent.ForwardResult.handled());
+
     ByteArrayDataInput in = ByteStreams.newDataInput(event.getData());
-    PluginMessage pluginMessage = PluginMessage.fromJson(in.readUTF());
+    var s = in.readUTF();
+    PluginMessage pluginMessage = PluginMessage.fromJson(s);
     for (MessageHandler handler : handlers) {
       if (handler.canHandle(pluginMessage.getMessageType())) {
         handler.handle(event.getTarget(), pluginMessage);

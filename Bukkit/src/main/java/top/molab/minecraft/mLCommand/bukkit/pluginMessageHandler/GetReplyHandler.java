@@ -1,11 +1,13 @@
 package top.molab.minecraft.mLCommand.bukkit.pluginMessageHandler;
 
+import com.google.gson.internal.LinkedTreeMap;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import top.molab.minecraft.MLCommand.Core.DTO.PlayerData;
 import top.molab.minecraft.MLCommand.Core.config.Group;
 import top.molab.minecraft.MLCommand.Core.pluginMessage.MessageTypes;
 import top.molab.minecraft.MLCommand.Core.pluginMessage.PluginMessage;
+import top.molab.minecraft.MLCommand.Core.utils.ClassCastUtil;
 import top.molab.minecraft.MLCommand.Core.utils.FindGroupUtils;
 import top.molab.minecraft.mLCommand.bukkit.ConfigManager;
 import top.molab.minecraft.mLCommand.bukkit.utils.CommandExecuteUtil;
@@ -22,7 +24,7 @@ public class GetReplyHandler implements IHandler {
 
   @Override
   public void handle(PluginMessage pluginMessage, Player player) {
-    PlayerData data = (PlayerData) pluginMessage.getData();
+    PlayerData data = ClassCastUtil.getPlayerDataFromLickedTreeMap((LinkedTreeMap) pluginMessage.getData());
     Group group =
         FindGroupUtils.findGroup(
             ConfigManager.getInstance().getConfig().getGroups(),
@@ -30,10 +32,14 @@ public class GetReplyHandler implements IHandler {
     if (group == null) {
       return;
     }
-
+    Player joinPlayer = Bukkit.getPlayer(data.getPlayerServiceData().getUuid());
     if (data.getPlayerLoginData().isFirstLogin()) {
-      Player joinPlayer = Bukkit.getPlayer(data.getPlayerServiceData().getUuid());
+
       for (String command : group.getFirstJoinCommands()) {
+        CommandExecuteUtil.executeCommand(joinPlayer, command);
+      }
+    }else{
+      for (String command : group.getCommands()) {
         CommandExecuteUtil.executeCommand(joinPlayer, command);
       }
     }

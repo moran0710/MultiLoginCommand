@@ -6,6 +6,11 @@ load: POSTWORLD
 author: Moran0710
 website: openmo.molab.top
 prefix: MLCommand
-softDepend:
+depend:
   - PlaceholderAPI
+commands:
+  mlcommand:
+    aliases: [mlc]
+    description: Reload MultiLoginCommand
+    permission: mlcommand.reload
 

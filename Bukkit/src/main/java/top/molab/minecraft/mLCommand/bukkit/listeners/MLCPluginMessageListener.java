@@ -4,6 +4,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import top.molab.minecraft.MLCommand.Core.Constants;
 import top.molab.minecraft.MLCommand.Core.pluginMessage.PluginMessage;
+import top.molab.minecraft.mLCommand.bukkit.MLCommandBukkit;
 import top.molab.minecraft.mLCommand.bukkit.pluginMessageHandler.IHandler;
 
 import java.util.ArrayList;
@@ -38,5 +39,11 @@ public class MLCPluginMessageListener implements PluginMessageListener {
     }
 
     PluginMessage message = PluginMessage.fromBytes(bytes);
+    for (IHandler handler : handlers) {
+      if (handler.canHandle(message.getMessageType())) {
+        MLCommandBukkit.getInstance().getLogger().info("Handle "+message.toJson());
+        handler.handle(message, usslessPlayer);
+      }
+    }
   }
 }

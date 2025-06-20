@@ -1,7 +1,7 @@
 package top.molab.minecraft.mlCommand;
 
-import com.velocitypowered.api.proxy.Player;
 import com.velocitypowered.api.proxy.messages.ChannelMessageSink;
+import com.velocitypowered.api.proxy.server.RegisteredServer;
 import top.molab.minecraft.MLCommand.Core.DTO.PlayerData;
 import top.molab.minecraft.MLCommand.Core.DTO.PlayerLoginData;
 import top.molab.minecraft.MLCommand.Core.DTO.PlayerServiceData;
@@ -17,13 +17,13 @@ public class Task {
     private List<PlayerLoginData> reply = new ArrayList<>();
     private int serverCount;
     private String echo;
-    private ChannelMessageSink channel;
+    private String serverName;
     private PlayerServiceData serviceData;
 
-    public Task(int serverCount, String echo, ChannelMessageSink channel, PlayerServiceData serviceData) {
+    public Task(int serverCount, String echo, String serverName, PlayerServiceData serviceData) {
         this.serverCount = serverCount;
         this.echo = echo;
-        this.channel = channel;
+        this.serverName = serverName;
         this.serviceData = serviceData;
     }
 
@@ -57,12 +57,18 @@ public class Task {
         message.setEcho(StringUtils.getRandomEchoString());
 
         // 发出去，再也不管了
-        this.channel.sendPluginMessage(PluginMessageListener.getInstance().IDENTIFIER, message.toBytes());
+        for (RegisteredServer s: MLCommandVelocity.getInstance().getProxyServer().getAllServers()){
+        if (s.getServerInfo().getName().equals(this.serverName)) {
+            s.sendPluginMessage(PluginMessageListener.getInstance().IDENTIFIER, message.toBytes());
+            return;
+            }
+        }
+        // this.channel.sendPluginMessage(PluginMessageListener.getInstance().IDENTIFIER, message.toBytes());
     }
 
     public PlayerLoginData getResult(){
         PlayerLoginData result = new PlayerLoginData();
-        result.setFirstLogin(true);
+        result.setFirstLogin(false);
         result.setName(reply.get(0).getName());
         result.setUuid(reply.get(0).getUuid());
         for (PlayerLoginData data: this.reply){
