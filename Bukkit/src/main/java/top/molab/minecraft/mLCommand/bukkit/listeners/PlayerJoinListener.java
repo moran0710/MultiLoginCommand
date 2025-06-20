@@ -45,7 +45,7 @@ public class PlayerJoinListener implements Listener {
         // getPlayerDataMessage.toBytes());
         MLCommandBukkit.getInstance().getLogger().info("Sent plugin message: "+ getPlayerDataMessage.toJson());
       }
-    }.runTaskLater(MLCommandBukkit.getInstance(), 30);
+    }.runTaskLater(MLCommandBukkit.getInstance(), ConfigManager.getInstance().getConfig().getDelay());
   }
 
 }

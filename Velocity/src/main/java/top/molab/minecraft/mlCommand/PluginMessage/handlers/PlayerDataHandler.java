@@ -11,6 +11,7 @@ import top.molab.minecraft.MLCommand.Core.pluginMessage.MessageTypes;
 import top.molab.minecraft.MLCommand.Core.pluginMessage.PluginMessage;
 import top.molab.minecraft.MLCommand.Core.utils.ClassCastUtil;
 import top.molab.minecraft.MLCommand.Core.utils.StringUtils;
+import top.molab.minecraft.mlCommand.ConfigManager;
 import top.molab.minecraft.mlCommand.MLCommandVelocity;
 import top.molab.minecraft.mlCommand.PluginMessage.PluginMessageListener;
 import top.molab.minecraft.mlCommand.Task;
@@ -60,7 +61,7 @@ public class PlayerDataHandler implements MessageHandler {
 
     // 创建并添加任务
     PluginMessageListener.getInstance().addTask(new Task(
-            MLCommandVelocity.getInstance().getProxyServer().getAllServers().size(),
+            ConfigManager.getInstance().getConfig().getServerCount(),
             message.getEcho(),
             serverName,
             playerServiceData

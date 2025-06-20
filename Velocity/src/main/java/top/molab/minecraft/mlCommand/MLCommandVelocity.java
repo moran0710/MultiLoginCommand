@@ -39,7 +39,7 @@ public class MLCommandVelocity {
     logger.info("MultiLoginCommand-Velocity Started");
     logger.info("----------------------------------");
 
-    // ConfigManager.getInstance().init();
+    ConfigManager.getInstance().init();
   }
 
   public static MLCommandVelocity getInstance() {

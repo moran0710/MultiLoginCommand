@@ -11,6 +11,8 @@ import org.yaml.snakeyaml.representer.Representer;
 
 public class Config {
   private Group[] groups;
+  private int serverCount;
+  private int delay;
 
   public Config() {}
 
@@ -19,11 +21,14 @@ public class Config {
   }
 
   public static Config saveDefaultConfig(File file) throws IOException {
+
     Group[] groups =
         new Group[] {
           new Group(1, "Offical", new String[] {"player: help"}, new String[] {"player: help"}),
         };
     Config config = new Config(groups);
+    config.setDelay(30);
+    config.setServerCount(1);
     file.getParentFile().mkdir();
     file.createNewFile();
 
@@ -71,4 +76,20 @@ public class Config {
   public void setGroups(Group[] groups) {
     this.groups = groups;
   }
+
+    public int getServerCount() {
+        return serverCount;
+    }
+
+    public void setServerCount(int serverCount) {
+        this.serverCount = serverCount;
+    }
+
+    public int getDelay() {
+        return delay;
+    }
+
+    public void setDelay(int delay) {
+        this.delay = delay;
+    }
 }
