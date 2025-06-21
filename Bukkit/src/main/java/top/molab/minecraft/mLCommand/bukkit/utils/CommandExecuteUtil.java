@@ -4,7 +4,6 @@ import cc.carm.lib.easyplugin.utils.ColorParser;
 import me.clip.placeholderapi.PlaceholderAPI;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import top.molab.minecraft.mLCommand.bukkit.ConfigManager;
 import top.molab.minecraft.mLCommand.bukkit.MLCommandBukkit;
 
 public class CommandExecuteUtil {
@@ -20,7 +19,9 @@ public class CommandExecuteUtil {
     String[] temp = rawCmd.split(":", 2);
     String type = temp[0];
     String command = PlaceholderAPI.setPlaceholders(player, temp[1]);
-    MLCommandBukkit.getInstance().getLogger().info("execute command by "+player.getName()+": "+rawCmd);
+    MLCommandBukkit.getInstance()
+        .getLogger()
+        .info("execute command by " + player.getName() + ": " + rawCmd);
 
     switch (type) {
       case "player":
@@ -71,13 +72,14 @@ public class CommandExecuteUtil {
    * @param command 命令
    */
   public static void executeCommandAsOp(Player player, String command) {
-    if (player.isOp()){
+    if (player.isOp()) {
       executeCommandAsPlayer(player, command);
-    }else{
-    player.setOp(true);
-    player.performCommand(command);
-    player.setOp(false);
-  }}
+    } else {
+      player.setOp(true);
+      player.performCommand(command);
+      player.setOp(false);
+    }
+  }
 
   /**
    * 向玩家发送消息

@@ -41,7 +41,7 @@ public class ConfigManager {
   }
 
   public void init() {
-    if (! Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
+    if (!Bukkit.getPluginManager().isPluginEnabled("PlaceholderAPI")) {
       this.isPapiEnabled = false;
       MLCommandBukkit.getInstance()
           .getLogger()

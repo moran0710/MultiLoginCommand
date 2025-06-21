@@ -12,9 +12,7 @@ import top.molab.minecraft.MLCommand.Core.utils.FindGroupUtils;
 import top.molab.minecraft.mLCommand.bukkit.ConfigManager;
 import top.molab.minecraft.mLCommand.bukkit.utils.CommandExecuteUtil;
 
-/**
- *在Velocity完成收集完全部内容后，会发送MessageTypes.REPLY_PLAYER_DATA，这时候可以处理登陆命令了
- */
+/** 在Velocity完成收集完全部内容后，会发送MessageTypes.REPLY_PLAYER_DATA，这时候可以处理登陆命令了 */
 public class GetReplyHandler implements IHandler {
 
   @Override
@@ -24,7 +22,8 @@ public class GetReplyHandler implements IHandler {
 
   @Override
   public void handle(PluginMessage pluginMessage, Player player) {
-    PlayerData data = ClassCastUtil.getPlayerDataFromLickedTreeMap((LinkedTreeMap) pluginMessage.getData());
+    PlayerData data =
+        ClassCastUtil.getPlayerDataFromLickedTreeMap((LinkedTreeMap) pluginMessage.getData());
     Group group =
         FindGroupUtils.findGroup(
             ConfigManager.getInstance().getConfig().getGroups(),
@@ -38,7 +37,7 @@ public class GetReplyHandler implements IHandler {
       for (String command : group.getFirstJoinCommands()) {
         CommandExecuteUtil.executeCommand(joinPlayer, command);
       }
-    }else{
+    } else {
       for (String command : group.getCommands()) {
         CommandExecuteUtil.executeCommand(joinPlayer, command);
       }

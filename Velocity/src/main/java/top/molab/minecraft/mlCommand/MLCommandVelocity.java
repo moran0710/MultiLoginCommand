@@ -65,5 +65,4 @@ public class MLCommandVelocity {
   public Path getDataDictionary() {
     return dataDictionary;
   }
-
 }

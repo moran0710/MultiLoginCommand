@@ -5,14 +5,10 @@ import com.google.common.io.ByteStreams;
 import com.google.gson.internal.LinkedTreeMap;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.connection.PluginMessageEvent;
-import com.velocitypowered.api.event.player.PlayerChatEvent;
 import com.velocitypowered.api.proxy.messages.MinecraftChannelIdentifier;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.jetbrains.annotations.NotNull;
 import top.molab.minecraft.MLCommand.Core.Constants;
-import top.molab.minecraft.MLCommand.Core.DTO.PlayerLoginData;
 import top.molab.minecraft.MLCommand.Core.pluginMessage.PluginMessage;
 import top.molab.minecraft.MLCommand.Core.utils.ClassCastUtil;
 import top.molab.minecraft.mlCommand.MLCommandVelocity;
@@ -25,6 +21,19 @@ public class PluginMessageListener {
       MinecraftChannelIdentifier.from(Constants.PLUGIN_MESSAGE_CHANNEL);
   private final List<MessageHandler> handlers = new ArrayList<>();
   private final List<Task> tasks = new ArrayList<>();
+
+  private PluginMessageListener() {}
+
+  public static PluginMessageListener getInstance() {
+    if (instance == null) {
+      synchronized (PluginMessageListener.class) {
+        if (instance == null) {
+          instance = new PluginMessageListener();
+        }
+      }
+    }
+    return instance;
+  }
 
   public void addTask(Task task){
     tasks.add(task);
@@ -41,19 +50,6 @@ public class PluginMessageListener {
 
   public void removeTask(Task task){
     tasks.remove(task);
-  }
-
-  private PluginMessageListener() {}
-
-  public static PluginMessageListener getInstance() {
-    if (instance == null) {
-      synchronized (PluginMessageListener.class) {
-        if (instance == null) {
-          instance = new PluginMessageListener();
-        }
-      }
-    }
-    return instance;
   }
 
   public void registerHandler(MessageHandler handler) {

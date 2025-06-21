@@ -10,7 +10,7 @@ depend:
   - PlaceholderAPI
 commands:
   mlcommand:
-    aliases: [mlc]
+    aliases: [ mlc ]
     description: Reload MultiLoginCommand
     permission: mlcommand.reload
 

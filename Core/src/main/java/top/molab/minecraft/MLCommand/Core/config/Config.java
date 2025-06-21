@@ -1,7 +1,6 @@
 package top.molab.minecraft.MLCommand.Core.config;
 
 import java.io.*;
-
 import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.LoaderOptions;
 import org.yaml.snakeyaml.Yaml;

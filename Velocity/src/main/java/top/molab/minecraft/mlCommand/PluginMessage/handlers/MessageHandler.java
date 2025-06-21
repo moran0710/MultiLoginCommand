@@ -6,5 +6,6 @@ import top.molab.minecraft.MLCommand.Core.pluginMessage.PluginMessage;
 
 public interface MessageHandler {
   public boolean canHandle(MessageTypes type);
+
   public void handle(ChannelMessageSink server, PluginMessage data);
 }

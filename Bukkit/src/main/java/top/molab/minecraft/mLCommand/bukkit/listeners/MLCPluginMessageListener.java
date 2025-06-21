@@ -1,5 +1,7 @@
 package top.molab.minecraft.mLCommand.bukkit.listeners;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.messaging.PluginMessageListener;
 import top.molab.minecraft.MLCommand.Core.Constants;
@@ -7,17 +9,10 @@ import top.molab.minecraft.MLCommand.Core.pluginMessage.PluginMessage;
 import top.molab.minecraft.mLCommand.bukkit.MLCommandBukkit;
 import top.molab.minecraft.mLCommand.bukkit.pluginMessageHandler.IHandler;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MLCPluginMessageListener implements PluginMessageListener {
 
   private static volatile MLCPluginMessageListener instance;
   private List<IHandler> handlers = new ArrayList<>();
-
-  public void registerHandler(IHandler handler) {
-    handlers.add(handler);
-  }
 
   private MLCPluginMessageListener() {}
 
@@ -30,6 +25,10 @@ public class MLCPluginMessageListener implements PluginMessageListener {
       }
     }
     return instance;
+  }
+
+  public void registerHandler(IHandler handler) {
+    handlers.add(handler);
   }
 
   @Override

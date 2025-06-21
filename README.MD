@@ -12,8 +12,8 @@ MultiLoginCommand时一个MultiLogin拓展，在玩家使用MultiLogin登录子�
 
 文档地址：[OpenMoPlugins](https://openmo.molab.top/bukkit/moChainMining/)
 
- - 支持设置首次登陆执行的命令
- - 支持对使用不同的登录凭证的玩家，执行不同的命令组
+- 支持设置首次登陆执行的命令
+- 支持对使用不同的登录凭证的玩家，执行不同的命令组
 
 ## 安装
 

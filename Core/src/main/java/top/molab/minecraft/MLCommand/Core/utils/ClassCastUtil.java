@@ -1,11 +1,10 @@
 package top.molab.minecraft.MLCommand.Core.utils;
 
 import com.google.gson.internal.LinkedTreeMap;
+import java.util.UUID;
 import top.molab.minecraft.MLCommand.Core.DTO.PlayerData;
 import top.molab.minecraft.MLCommand.Core.DTO.PlayerLoginData;
 import top.molab.minecraft.MLCommand.Core.DTO.PlayerServiceData;
-
-import java.util.UUID;
 
 public class ClassCastUtil {
     public static PlayerServiceData getPlayerServiceFromLinkedTreeMap(LinkedTreeMap map){
